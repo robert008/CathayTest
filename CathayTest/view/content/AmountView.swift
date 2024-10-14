@@ -28,23 +28,14 @@ class AmountView: UIView {
         animationV.frame = CGRect(x: 0, y: 0, width: getWidth(), height: getHeight())
     }
 
-    
+    @objc func didSelectEyeButton() {
+        eyeBtn.isSelected = !eyeBtn.isSelected
+        reloadSummary()
+    }
+
+    //MARK: network request
+
     func firstLaunchRequest(){
-//        let gradientView = GradientAnimationView()
-//        gradientView.translatesAutoresizingMaskIntoConstraints = false
-//        addSubview(gradientView)
-//
-//        // 設置約束，使其填滿整個視圖
-//        NSLayoutConstraint.activate([
-//            gradientView.topAnchor.constraint(equalTo: topAnchor),
-//            gradientView.bottomAnchor.constraint(equalTo: bottomAnchor),
-//            gradientView.leadingAnchor.constraint(equalTo: leadingAnchor),
-//            gradientView.trailingAnchor.constraint(equalTo: trailingAnchor)
-//        ])
-//
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-////            gradientView.stopAnimating()
-//        }
 
         addSubview(animationV)
         reqCount = 0
@@ -110,6 +101,8 @@ class AmountView: UIView {
             reqCount += 1
         }
     }
+    
+    //MARK: get summary
 
     func calSummary(savingList:[SavingsList]? , digitalList:[DigitalList]? , depositList:[FixedDepositList]?){
     
@@ -154,8 +147,8 @@ class AmountView: UIView {
 
         }
 
-        print("sumUSD : \(sumUSD)")
-        print("sumKHR : \(sumKHR)")
+//        print("sumUSD : \(sumUSD)")
+//        print("sumKHR : \(sumKHR)")
         DispatchQueue.main.async { [self] in
             self.reloadSummary()
         }
@@ -164,7 +157,7 @@ class AmountView: UIView {
     
     func reloadSummary() {
         if reqCount == 6 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { // 只少跑1.5秒
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { // 至少跑1.5秒
                 self.animationV.removeFromSuperview()
             }
         }
@@ -188,10 +181,6 @@ class AmountView: UIView {
         }
     }
 
-    @objc func didSelectEyeButton() {
-        eyeBtn.isSelected = !eyeBtn.isSelected
-        reloadSummary()
-    }
 
     
 }

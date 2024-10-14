@@ -11,13 +11,6 @@ class TopBarView: UIView {
     @IBOutlet var notificationBtn:UIButton!
     var messageList:[Messages] = []
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
     func initViews(wid:CGFloat){
         setWidth(width: wid)
         notificationBtn.setAlignToRight(offset: 24)

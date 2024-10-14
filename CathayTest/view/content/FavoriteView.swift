@@ -30,7 +30,8 @@ class FavoriteView: UIView {
         mScrlV.isHidden = true
     }
 
-    
+    //MARK: network request
+
     func reqFetchFavoriteList(url:String){
         NetworkManager.shared.fetchFavoriteList(from: url) { [self] isSuccess, list, des in
 //            print("reqFetchFavoriteList : \(des)")

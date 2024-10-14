@@ -8,32 +8,6 @@
 import UIKit
 
 class FuncButtonView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
-    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-        super.init(coder: coder)
-        print("init with coder")
-        print("width : \(getWidth())")
-
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        // 此時 frame 已經設置為最終值
-        print("layoutSubviews width : \(getWidth())")
-
-    }
-    
-    
-
     
     func initViews(wid:CGFloat){
         setWidth(width: wid)

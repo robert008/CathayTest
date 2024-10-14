@@ -75,6 +75,8 @@ class BannerView: UIView , UIScrollViewDelegate{
         }
     }
     
+    //MARK: network request
+
     func reqFetchBannerList(){
         let url = "https://willywu0201.github.io/data/banner.json"
         NetworkManager.shared.fetchBannerList(from: url) { [self] isSuccess, list, des in
@@ -91,9 +93,7 @@ class BannerView: UIView , UIScrollViewDelegate{
     //MARK: page control
 
     @objc func pageChanged() {
-//        let offset = CGPoint(x: (mScrlV?.frame.width)! * CGFloat(pageControl!.currentPage), y: 0)
         setScrollPageOffset(page: pageControl!.currentPage)
-//        mScrlV?.setContentOffset(offset, animated: true)
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -132,8 +132,6 @@ class BannerView: UIView , UIScrollViewDelegate{
                 pageControl.currentPage = 0
             }
             else {
-//                let offset = CGPoint(x: (mScrlV?.frame.width)! * CGFloat(pageControl!.currentPage + 1), y: 0)
-//                mScrlV?.setContentOffset(offset, animated: true)
                 let page = pageControl!.currentPage + 1
                 pageControl.currentPage = page
                 setScrollPageOffset(page: page)
